@@ -1,4 +1,5 @@
 #include <iostream>
+#include<cstdio>
 using namespace std;
 int main()
 {
@@ -18,6 +19,5 @@ int main()
         cout<<"is an armstrong number";
     else
         cout<<"is not an armstrong nummber";
-  
     return 0;
 }
