@@ -1,5 +1,6 @@
+# Hii I AM  SHAMIL THOMAS & I WELCOME YOU IN  HacktoberFest 2021 
 ## Give a star to the repository if you like it ⭐
-![](https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg)
+![Frame 1 (2)](https://user-images.githubusercontent.com/55616388/135486681-adf5d5e7-d03c-4352-8e0c-d33ca1bee931.jpg)
 Add a code in any language
 
 # ❓ What's Hacktoberfest 2021?
@@ -11,6 +12,19 @@ During the entire month of October 2021, all you have to do is contribute to any
 If you’ve never contributed to open source before, this is the perfect time to get started because Hacktoberfest provides a large list of available contribution opportunities (and yes, there are always plenty for beginners too).
 
 ---
+
+### How do I get started?
+1. Visit the official HactoberFest website [here](https://hacktoberfest.digitalocean.com/)
+2. Click on the 'Start Hacking' Button.
+3. Login using your Github/ Gitlab account. It is crucial that you have a Github or Gitlab account to take part in Hactoberfest.
+4. And you're all set!
+
+### What do I do next?
+Logging in through your Github/Gitlab account allows Hacktoberfest to track your progress.
+You are required to:
+- **Make 4 succesful PRs in to a HactoberFest marked repository or need to have 'hacktoberfest-accepted' label to your PR.**
+- **Pull Requests made between October 1st and October 31st (both dates included) will be counted.**
+
 
 # 👕 Why Should I Contribute?
 
@@ -33,4 +47,11 @@ It's very easy. You don't need to be an expert in coding and programming. Here a
 
 
 
+### How to Contribute to this Repo:
+Add your projects to this repository
+```sh
+fork this repo
+add code to the forked repo
+make pull request
+```
 
