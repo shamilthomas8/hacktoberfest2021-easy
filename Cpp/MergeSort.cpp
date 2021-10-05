@@ -1,83 +1,66 @@
-#include <iostream>
+#include<iostream>
+#include<cstdio>
+#include<cmath>
 using namespace std;
-
-void mergeSort(int A[], int low, int high);
-void merge(int A[], int low, int mid, int high);
-
-int main()
-{
-
-    int arr[] = {20, 10, 24, 14, 12, 0, 8, 5, 9, 21};
-
-    cout << "\nBefore\n";
-    for (int i = 0; i < 10; i++)
-    {
-        cout << arr[i] << " ";
-    }
-
-    mergeSort(arr, 0, 9);
-
-    cout << "\n\nAfter\n";
-    for (int i = 0; i < 10; i++)
-    {
-        cout << arr[i] << " ";
-    }
-
-    return 0;
+void print_array(int array[],int left,int right){
+    int i;
+    for (i=left; i <= right; i++)
+        cout<<array[i]<<'\t';
+    cout<<endl;
 }
 
-void mergeSort(int A[], int low, int high)
-{
-    if (low < high)
-    {
-        int mid = (low + high) / 2;
-        mergeSort(A, low, mid);
-        mergeSort(A, mid + 1, high);
-        merge(A, low, mid, high);
-    }
-}
+void merge(int array[], int left, int mid, int right){
+    int i, j, k;
+    int n1 = mid - left + 1;
+    int n2 =  right - mid;
 
-void merge(int A[], int low, int mid, int high)
-{
-    int i = low;
-    int j = mid + 1;
-    int k = low;
-    int b[high - low + 1];
-    while (i <= mid && j <= high)
-    {
-        if (A[i] <= A[j])
-        {
-            b[k] = A[i];
-            i++;
-        }
+    int Left[n1], Right[n2];
+
+    /* Copy data to temp arrays L[] and R[] */
+    for (i = 0; i < n1; i++)
+        Left[i] = array[left + i];
+    for (j = 0; j < n2; j++)
+        Right[j] = array[mid + 1+ j];
+
+    i = 0; // Initial index of first subarray
+    j = 0; // Initial index of second subarray
+    k = left; // Initial index of merged subarray
+    while (i < n1 && j < n2){
+        if (Left[i] <= Right[j])
+            array[k++] = Left[i++];
         else
-        {
-            b[k] = A[j];
-            j++;
-        }
-        k++;
-    }
-    if (i > mid)
-    {
-        while (j <= high)
-        {
-            b[k] = A[j];
-            j++;
-            k++;
-        }
-    }
-    else
-    {
-        while (i <= mid)
-        {
-            b[k] = A[i];
-            i++;
-            k++;
-        }
+            array[k++] = Right[j++];
     }
 
-    for (int z = low; z <= high; z++)
-    {
-        A[z] = b[z];
+    /* Copy the remaining elements of L[], if there are any */
+    while (i < n1)
+        array[k++] = Left[i++];
+
+    /* Copy the remaining elements of R[], if there are any */
+    while (j < n2)
+        array[k++] = Right[j++];
+}
+
+void mergeSort(int array[], int left, int right){
+    int i;
+    if (left < right){
+        int mid = left + (right - left) / 2;
+        mergeSort(array, left, mid);
+        mergeSort(array, mid+1, right);
+        merge(array, left, mid, right);
     }
+}
+
+
+int main(){
+    int array[] = {24, 17, 13, 22, 19, 21, 16, 12};
+    int array_size = sizeof(array)/sizeof(array[0]);
+    int i;
+
+    cout<<"Given array is :\n";
+    print_array(array,0,array_size-1);
+    mergeSort(array, 0, array_size - 1);
+    cout<<"\nSorted array is :\n";
+    print_array(array,0,array_size-1);
+    return 0;
 }
