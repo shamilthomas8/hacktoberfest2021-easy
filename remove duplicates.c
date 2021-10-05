@@ -1,30 +1,36 @@
-#include<stdio.h>
-#include<stdlib.h>
-void main(){
-int i,j,n,c=0,f;
-scanf("%d",&n);
-int* a = (int*)malloc(n*sizeof(int));
-int* b = (int*)malloc(n*sizeof(int));
-for(i=0;i<n;i++){
-    scanf("%d",&a[i]);
-}
+#include <stdio.h>
+int main()
+{
+  int n, count = 0;
+  scanf("%d", &n);
+  int arr[n], temp[n];
+  for (int i = 0; i < n; i++)
+  {
+    scanf("%d", &arr[i]);
+  }
 
-for(i=0;i<n;i++){
-        f=0;
-        for(j=0;j<c;j++){
-            if(a[i]==b[j]){
-                f=1;
-                break;
-            }
-        }
-        if(f==0){
-            b[c++]=a[i];
+  printf("\nArray Before Removing Duplicates: ");
+  for (int i = 0; i < n; i++)
+    printf("%d ", arr[i]);
 
-        }
+  for (int i = 0; i < n; i++)
+  {
+    int j;
+    for (j = 0; j < count; j++)
+    {
+      if (arr[i] == temp[j])
+        break;
+    }
+    if (j == count)
+    {
+      temp[count] = arr[i];
+      count++;
+    }
+  }
 
-}
-for(i=0;i<c;i++){
-    printf("%d ",b[i]);
-}
+  printf("\nArray After  Removing Duplicates: ");
+  for (int i = 0; i < count; i++)
+    printf("%d ", temp[i]);
 
+  return 0;
 }
