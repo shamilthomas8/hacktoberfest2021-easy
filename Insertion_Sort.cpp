@@ -17,7 +17,7 @@ void insertionSort(int array[], int n){
         {                     // find the correct position of the element
             array[j+1] = array[j];        // shift all lesser elements
 
-            j = j-1;
+            j = j-1;                        //increment the value of j
         }
         array[j+1] = key;           // place the element at position
     }
