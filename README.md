@@ -1,4 +1,4 @@
-# Hii I AM  SHAMIL THOMAS & I WELCOME YOU IN  HacktoberFest 2021 
+# Hii I AM  SHAMIL THOMAS & I WELCOME YOU TO HacktoberFest 2021 
 ## Give a star to the repository if you like it ⭐
 ![Frame 1 (2)](https://user-images.githubusercontent.com/55616388/135486681-adf5d5e7-d03c-4352-8e0c-d33ca1bee931.jpg)
 Add a code in any language
