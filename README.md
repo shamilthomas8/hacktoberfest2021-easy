@@ -1,4 +1,4 @@
-# hacktoberfest2021-easy
+## Give a star to the repository if you like it ⭐
 ![](https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg)
 Add a code in any language
 
@@ -33,4 +33,4 @@ It's very easy. You don't need to be an expert in coding and programming. Here a
 
 
 
-## Give a star to the repository if you like it ⭐
+
