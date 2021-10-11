@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+html, body {
+  height: 100%;
+  background: #dde1e7;
+  position: relative;
+}
+
+.icon-large {
+  width: 220px;
+  height: 220px;
+  border-radius: 38px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.icon-clock {
+  overflow: hidden;
+  background: #dde1e7;
+  border-radius: 50%;
+  box-shadow: -3px -3px 7px #ffffff73,
+              2px 2px 5px rgba(94, 104, 121, 0.288);
+}
+
+.clock {
+  width: 192px;
+  height: 192px;
+  border-radius: 50%;
+  background: #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: inset 2px 2px 5px #babecc,
+              inset -5px -5px 10px #ffffff73;
+}
+.clock ol {
+  list-style-type: none;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+.clock ol li {
+  counter-increment: labelCounter;
+  position: absolute;
+  font-size: 1.25em;
+}
+.clock ol li:before {
+  font-family: "Helvetica";
+  content: counter(labelCounter) "";
+}
+.clock ol li:nth-child(1) {
+  right: 55px;
+  top: 20px;
+}
+.clock ol li:nth-child(2) {
+  right: 25px;
+  top: 50px;
+}
+.clock ol li:nth-child(3) {
+  right: 12px;
+  top: 85px;
+}
+.clock ol li:nth-child(4) {
+  right: 25px;
+  top: 125px;
+}
+.clock ol li:nth-child(5) {
+  right: 55px;
+  top: 150px;
+}
+.clock ol li:nth-child(6) {
+  right: 90px;
+  top: 160px;
+}
+.clock ol li:nth-child(7) {
+  right: 125px;
+  top: 150px;
+}
+.clock ol li:nth-child(8) {
+  right: 155px;
+  top: 125px;
+}
+.clock ol li:nth-child(9) {
+  right: 165px;
+  top: 85px;
+}
+.clock ol li:nth-child(10) {
+  right: 150px;
+  top: 50px;
+}
+.clock ol li:nth-child(11) {
+  right: 120px;
+  top: 20px;
+}
+.clock ol li:nth-child(12) {
+  right: 85px;
+  top: 10px;
+}
+
+@-webkit-keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#hour {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #303030;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -7px;
+  margin-left: -7px;
+}
+#hour:before, #hour:after {
+  content: "";
+  display: block;
+  position: absolute;
+}
+#hour:before {
+  width: 8px;
+  height: 65px;
+  border-radius: 4px;
+  background: #303030;
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+#min {
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: #303030;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+#min:before, #min:after {
+  content: "";
+  display: block;
+  position: absolute;
+}
+#min:before {
+  width: 6px;
+  height: 90px;
+  border-radius: 4px;
+  background: #303030;
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+#sec {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #dd3e1c;
+  border: 2px solid #e13e1b;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -4px;
+  margin-left: -4px;
+}
+#sec:before, #sec:after {
+  content: "";
+  display: block;
+  position: absolute;
+}
+#sec:before {
+  width: 2px;
+  height: 105px;
+  border-radius: 4px;
+  background: #e13e1b;
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+    </style>
+</head>
+<body>
+    <div class="icon-large icon-clock">
+  <div class="clock">
+    <ol>
+      <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+    </ol>
+    <div id="hour"></div>
+    <div id="min"></div>
+    <div id="sec"></div>
+  </div>
+</div>
+<script>
+ 
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          function( callback ){
+              window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
+//initialize the clock in a self-invoking function
+(function clock(){ 
+    var hour = document.getElementById("hour"),
+        min = document.getElementById("min"),
+        sec = document.getElementById("sec");
+    //set up a loop
+    (function loop(){
+        requestAnimFrame(loop);
+        draw();
+    })();
+    //position the hands
+    function draw(){
+        var now = new Date(),//now
+            then = new Date(now.getFullYear(),now.getMonth(),now.getDate(),0,0,0),//midnight
+            diffInMil = (now.getTime() - then.getTime()),// difference in milliseconds
+            h = (diffInMil/(1000*60*60)),//hours
+            m = (h*60),//minutes
+            s = (m*60);//seconds
+        //rotate the hands accordingly
+        sec.style.webkitTransform = "rotate(" + (s * 6) + "deg)";
+        hour.style.webkitTransform = "rotate(" + (h * 30 + (h / 2)) + "deg)";
+        min.style.webkitTransform = "rotate(" + (m * 6) + "deg)";
+    } 
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Neumorphism calculator design</title>
+  <link rel="stylesheet" href="./style.css">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+body {
+  background: #dde1e7;
+  font-family: 'Montserrat', sans-serif;
+}
+.container {
+  background: #dde1e7;
+  width: 320px;
+  height: 550px;
+  border-radius: .5em;
+  box-shadow: -3px -3px 7px #ffffff73,
+              2px 2px 5px rgba(94, 104, 121, 0.288);
+  margin: 0 auto;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+.container .result {
+  width: 100%;
+  height: 150px;
+  box-shadow: inset 2px 2px 5px #babecc,
+              inset -5px -5px 10px #ffffff73;
+  
+}
+.container .result p {
+  font-size: 40pt;
+  overflow-y: auto;
+  text-align: right;
+
+}
+
+.container .buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1em;
+}
+.container .buttons .button, .container .buttons .num-button  {
+  cursor: grab;
+  text-align: center;
+  width: 60px;
+  font-size:18px;
+  height: 60px;
+  display: grid;
+  place-content: center;
+  border-radius: 50%;
+  box-shadow: 2px 2px 5px #babecc,
+              -5px -5px 10px #ffffff73;
+}
+.button:hover{
+  color: #3498db;
+
+ 
+}
+
+
+/*  UTILITIES*/
+.container .buttons .zero {
+  grid-column: 1/ 3;
+  width: 100%;
+  font-size:18px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px #babecc,
+              -5px -5px 10px #ffffff73;
+}
+
+ 
+.action-btn {
+  color: grey;
+  font-weight: bold;
+}
+.calc-action-btn{
+  color: #ed11d7;
+  font-size: 20px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <div class="container">
+    <div class="result">
+      <p id="result-box">0</p>
+    </div>
+
+
+    <div class="buttons">
+      <div class="button action-btn" id="clear"> AC </div>
+      <div class="button action-btn"> MC</div>
+      <div class="button num-button  action-btn"> %</div>
+      <div class="button num-button  calc-action-btn"> /</div>
+      <div class="button num-button seven">7</div>
+      <div class="button num-button eight">8</div>
+      <div class="button num-button  nine">9</div>
+      <div class="button num-button  calc-action-btn">*</div>
+      <div class="button num-button  four">4</div>
+      <div class="button num-button  five">5</div>
+      <div class="button num-button  six">6</div>
+      <div class="button num-button  calc-action-btn">-</div>
+      <div class="button num-button  one">1</div>
+      <div class="button num-button  two">2</div>
+      <div class="button num-button  three">3</div>
+      <div class="button num-button  calc-action-btn">+</div>
+      <div class="button num-button  zero">0</div>
+      <div class="button num-button  point">.</div>
+      <div class="button calc-action-btn" id="total">=</div>
+    </div>
+
+  </div>
+   
+  <script>
+
+
+let btns = document.querySelectorAll(".num-button");
+let allBtns = document.querySelectorAll(".button");
+let resultBox = document.querySelector("#result-box");
+let clearBtn = document.querySelector('#clear');
+
+let total = document.querySelector("#total");
+
+let btnSpread = [...btns];
+let allBtnSpread = [...allBtns];
+
+// For Number Inputs
+btnSpread.forEach((button, i) => {
+  button.addEventListener("click", () => {
+    // Inner Values for calculator
+
+    if (resultBox.innerHTML == "0") {
+      resultBox.innerHTML = "";
+    }
+
+    let value = btns[i].innerHTML;
+    resultBox.innerHTML += value;
+  });
+});
+
+
+// Function to evalute Strings
+function evaluate(fn) {
+    return new Function('return ' + fn)();
+}
+
+// To calculate All Input
+total.addEventListener('click', ()=> {
+let allInputs = resultBox.innerHTML;
+
+resultBox.innerHTML = evaluate(allInputs);
+
+console.log(evaluate(allInputs));
+})
+
+// Clear all Inputs
+clearBtn.addEventListener('click', ()=> {
+    resultBox.innerHTML = "0";
+})
+ 
+
+</script>
+
+</body>
+
+</html>
