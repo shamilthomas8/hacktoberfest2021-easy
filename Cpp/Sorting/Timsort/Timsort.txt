@@ -1,0 +1,3 @@
+Timsort is a hybrid stable sorting algorithm, derived from merge sort and insertion sort, designed to perform well on almost any kind of real-world data. Tim Peter created Timsort (and its awesome name) for the Python programming language in 2001.
+So how efficient is it really? Well since its invention in 2001, its been used as the default sorting algorithm in Python, Java, Android OS, and Octave! Its a trusted and go-to method for sorting.
+
